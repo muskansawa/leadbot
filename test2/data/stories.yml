@@ -1,0 +1,46 @@
+version: "2.0"
+stories:
+- story: begin conversation
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_menu
+
+- story: combined begin with url
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_menu
+  - intent: begin_lead
+  - action: utter_lead_q1
+  - action: lead_form_p1
+#  - action: form{"name":"lead_form_p1"}
+#  - action: form{"name":null}
+  - intent: accept
+  - action: lead_form_p2
+#  - action: form{"name":"lead_form_p2"}
+#  - action: form{"name":null}
+  - action: lead_form_p3
+ # - action: form{"name":"lead_form_p3"}
+ # - action: form{"name":null}
+  - action: utter_lead_q3
+  - action: utter_lead_q4
+  - action: utter_lead_q5
+
+- story: combined begin without url
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_menu
+  - intent: begin_lead
+  - action: utter_lead_q1
+  - action: lead_form_p1
+  - action: form{"name":"lead_form_p1"}
+  - action: form{"name":null}
+  - intent: reject
+  - action: lead_form_p3
+  - action: form{"name":"lead_form_p3"}
+  - action: form{"name":null}
+  - action: utter_lead_q3
+  - action: utter_lead_q4
+  - action: utter_lead_q5
